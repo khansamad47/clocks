@@ -1,4 +1,6 @@
 import React from 'react';
+import { Card } from 'evergreen-ui'
+
 var moment = require('moment-timezone');
 
 const styles = {
@@ -47,10 +49,10 @@ export class Clock extends React.Component {
     render() 
     {
         return (
-            <div>
+            <Card elevation={1}>
             <p> {this.props.timezone} </p>
             <p> { this.state.time.format("hh:mm A") } </p>
-            </div>
+            </Card>
         );
     }    
 };

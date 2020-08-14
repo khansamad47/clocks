@@ -1,5 +1,7 @@
 import React from 'react';
 import { Clock } from './Clock';
+import { ClockFace } from './ClockFace';
+import { Button, TagInput } from 'evergreen-ui'
 
 
 export class ClockManager extends React.Component {
@@ -26,14 +28,18 @@ export class ClockManager extends React.Component {
     {
         return (
           <div>
-            <button onClick={ () => this.toggleFreeze() }>Freeze</button>
-            <button onClick={ () => this.goBack() }>Back</button>
+            <TagInput
+                inputProps={{ placeholder: 'Add trees...' }}
+            />
+            <Button onClick={ () => this.toggleFreeze() }>Freeze</Button>
+            <Button onClick={ () => this.goBack() }>Back</Button>
             <Clock timezone="Europe/London"
                 freeze={ this.state.freeze } 
                 delta={ this.state.delta } />
             <Clock timezone="America/Los_Angeles"
                 freeze={ this.state.freeze } 
                 delta={ this.state.delta } />
+            <ClockFace />
           </div>
         );
     }    
