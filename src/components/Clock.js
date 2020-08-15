@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card } from 'evergreen-ui'
+import { ClockFace } from './ClockFace';
 
 var moment = require('moment-timezone');
 
@@ -49,10 +50,10 @@ export class Clock extends React.Component {
     render() 
     {
         return (
-            <Card elevation={1}>
-            <p> {this.props.timezone} </p>
-            <p> { this.state.time.format("hh:mm A") } </p>
-            </Card>
+            <ClockFace
+                locationName={this.props.timezone}
+                timeString={ this.state.time.format("hh:mm A") }
+            />
         );
     }    
 };
