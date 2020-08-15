@@ -52,7 +52,9 @@ export class Clock extends React.Component {
         return (
             <ClockFace
                 locationName={this.props.timezone}
-                timeString={ this.state.time.format("hh:mm A") }
+                hhmm={ this.state.time.format("hh:mm") }
+                ss={ this.state.time.format(":ss") }
+                ampm={ this.state.time.format("A") }
             />
         );
     }    

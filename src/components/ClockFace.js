@@ -22,12 +22,29 @@ export class ClockFace extends React.Component {
                         {this.props.locationName}
                     </Heading>
                 </Pane>
-                <Pane>
+                <Pane
+                    display="flex"  
+                    flex-direction="row"
+                    jusitfy-content="flex-end"
+                    alignItems="baseline"
+                >
                     <Text 
-                        marginRight={16}
                         size={600}
                     > 
-                        {this.props.timeString}
+                        {this.props.hhmm}
+                    </Text>
+                    <Text 
+                        marginRight={3}
+                        size={600}
+                        color="muted"
+                    > 
+                        {this.props.ss}
+                    </Text>
+                    <Text 
+                        size={300}
+                        color="muted"
+                    > 
+                        {this.props.ampm}
                     </Text>
                 </Pane>
 </Pane>

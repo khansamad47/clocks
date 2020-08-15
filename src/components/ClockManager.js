@@ -54,7 +54,7 @@ export class ClockManager extends React.Component {
     
     }
     onTimeSeek(event){
-        const seekBack = event.deltaY < 0? -1 : 1;
+        const seekBack = event.deltaY > 0? -1 : 1;
         this.setState({
             delta : this.state.delta + seekBack
         }); 
