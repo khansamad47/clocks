@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pane, Text, Heading, Button, SelectMenu, EditIcon } from 'evergreen-ui'
+import { Pane, Text, Heading, Button, SelectMenu, EditIcon, Tooltip } from 'evergreen-ui'
 
 
 export class TimeZonePicker extends React.Component {
@@ -17,7 +17,12 @@ export class TimeZonePicker extends React.Component {
                 onDeselect={(item)=>this.props.onDeselect(item)}
                 selected={this.props.selected}
             >
-            <EditIcon />
+            <Tooltip content="Modify your timezone selection">
+            <EditIcon 
+                marginRight={16}
+                size={20}
+            />
+            </Tooltip>
             </SelectMenu>
         );
     }    

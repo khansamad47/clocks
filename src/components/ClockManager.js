@@ -4,6 +4,7 @@ import moment from 'moment-timezone';
 import { Clock } from './Clock';
 import { ClockFace } from './ClockFace';
 import { TimeZonePicker } from './TimeZonePicker';
+import { TimeSeeker } from './TimeSeeker';
 import { Button, Pane } from 'evergreen-ui'
 
 
@@ -13,11 +14,7 @@ export class ClockManager extends React.Component {
         const timezones = moment.tz.names();
         this.state = {
             timezonesPickerOptions : timezones.map(item =>({label:item, value: item})),
-            //[
-            //    {label: "Karachi", value: "Karachi"}, 
-            //    {label:"London", value:"London" }
-            //],
-            selectedTimeZones : [],
+            selectedTimeZones : ["America/New_York"],
             freeze: false,
             delta : 0
         }
@@ -56,19 +53,34 @@ export class ClockManager extends React.Component {
                     delta={ this.state.delta } />);
     
     }
+    onTimeSeek(event){
+        const seekBack = event.deltaY < 0? -1 : 1;
+        this.setState({
+            delta : this.state.delta + seekBack
+        }); 
+
+    }
     render() 
     {
         let clockComponents = this.state.selectedTimeZones.map((item) => this.appendClock(item));
         return (
           <Pane width={600} >
-            <TimeZonePicker
-                options={this.state.timezonesPickerOptions} 
-                selected={this.state.selectedTimeZones}
-                onSelect={(item) => this.onTimeZoneSelect(item)}
-                onDeselect={(item) => this.onTimeZoneDeselect(item)}
-            />
-            <Button onClick={ () => this.toggleFreeze() }>Freeze</Button>
-            <Button onClick={ () => this.goBack() }>Back</Button>
+            <Pane 
+                display="flex"
+                flex-direction="row"
+                margin={10}
+                justifyContent="flex-end"
+            >
+                <TimeZonePicker
+                    options={this.state.timezonesPickerOptions} 
+                    selected={this.state.selectedTimeZones}
+                    onSelect={(item) => this.onTimeZoneSelect(item)}
+                    onDeselect={(item) => this.onTimeZoneDeselect(item)}
+                />
+                <TimeSeeker 
+                    onWheel={ (event) => this.onTimeSeek(event)} 
+                />
+            </Pane>
             <Pane>
                 { clockComponents }
             </Pane>

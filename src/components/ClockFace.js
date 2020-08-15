@@ -9,7 +9,7 @@ export class ClockFace extends React.Component {
             <Pane
                 display="flex" 
                 padding={16}
-                background="tint1" 
+                background="tint2" 
                 borderRadius={3}
                 border="muted"
                 margin={20}

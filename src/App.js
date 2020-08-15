@@ -6,16 +6,18 @@ import { Pane } from 'evergreen-ui'
 function App() {
   
   return (
-    <div className="App">
+      <div className="App" style = { {height:"100vh"}} >
       <Pane
         display="flex" 
-        alignItems="center"
+        alignItems="flex-start"
         justifyContent="center"
-        background="#D4EEE2"
+        background="#47B881"
+        width="100%"
+        height="100%"
       >
         <ClockManager />
       </Pane>
-    </div>
+      </div>
   );
 }
 
