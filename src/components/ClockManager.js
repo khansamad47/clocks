@@ -40,12 +40,6 @@ export class ClockManager extends React.Component {
             freeze : !this.state.freeze
         }); 
     }
-    goBack() {
-        console.log("ClockManager.goBack called.");
-        this.setState({
-            delta : this.state.delta-1
-        }); 
-    }
     appendClock(timezone)
     {
         return (<Clock timezone={timezone}
@@ -54,7 +48,7 @@ export class ClockManager extends React.Component {
     
     }
     onTimeSeek(event){
-        const seekBack = event.deltaY > 0? -1 : 1;
+        const seekBack = event.deltaY > 0? -1.5 : 1.5;
         this.setState({
             delta : this.state.delta + seekBack
         }); 

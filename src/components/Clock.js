@@ -26,7 +26,7 @@ export class Clock extends React.Component {
         });
     }
     startTick(){
-        this.intervalID = setInterval(() => this.tick(), 1000);
+        this.intervalID = setInterval(() => this.tick(), 10);
     }
     stopTick() {
         clearInterval(this.intervalID);
